@@ -4,9 +4,9 @@
 - name: Create an instance
   os_server:
     name: "{{ item.name }}"
-    image: "{{ instance_image }}"
+    image: "{{ item.image }}"
     key_name: "{{ instance_key_name }}"
-    flavor: "{{ instance_flavor }}"
+    flavor: "{{ item.flavor }}"
     availability_zone: "{{ availability_zone }}"
     security_groups: "{{ sg_names }}"
     volumes: "{{ item.volumes }}"

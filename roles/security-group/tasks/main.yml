@@ -1,12 +1,12 @@
 ---
-# Create volumes
+# Create a security group
 
-- name: Create volumes
-  os_volume:
-    display_name: "{{ item.vol_name }}"
-    size: "{{ item.vol_size }}"
+- name: Create a security group
+  os_security_group:
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
     state: present
-  loop: "{{ volumes }}"
+  loop: "{{ security_groups }}"
 
 - name: Create a list of security group names
   set_fact:
