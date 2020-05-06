@@ -1,3 +1,2 @@
 [harvester]
-115.146.93.205 ansible_python_interpreter=/usr/bin/python3
-115.146.92.41 ansible_python_interpreter=/usr/bin/python3
+45.113.235.115 ansible_python_interpreter=/usr/bin/python3

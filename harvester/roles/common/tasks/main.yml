@@ -23,11 +23,18 @@
       ]
     state: latest
     install_recommends: no
-    update_cache: yes
+    update_cache: no
 
 - name: Update pip
   tags: always
   become: yes
   pip:
     name: ["pip"]
+    state: latest
+
+- name: Install docker & docker-compose
+  tags: "docker"
+  become: yes
+  pip:
+    name: ["docker", "docker-compose"]
     state: latest

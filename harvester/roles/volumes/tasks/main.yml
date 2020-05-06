@@ -1,25 +1,25 @@
 ---
 - name: Install dependencies
-  tags: 'volumes'
+  tags: "volumes"
   become: yes
   apt:
-    name: ['xfsprogs']
+    name: ["xfsprogs"]
     state: latest
     install_recommends: no
-    update_cache: yes
+    update_cache: no
 
 - name: Make file system
-  tags: 'volumes'
+  tags: "volumes"
   become: yes
   filesystem:
     fstype: xfs
-    dev: "{{ item.device }}"
+    device: "{{ item.device }}"
   when: item.device is defined
   with_items:
     - "{{ volumes }}"
 
 - name: Checking folders
-  tags: 'volumes'
+  tags: "volumes"
   become: yes
   stat:
     path: "{{ item.mountpoint }}"
@@ -28,7 +28,7 @@
     - "{{ volumes }}"
 
 - name: Create directory
-  tags: 'volumes'
+  tags: "volumes"
   become: yes
   file:
     path: "{{ item.item.mountpoint }}"
@@ -39,7 +39,7 @@
     - "{{ directory_stats.results }}"
 
 - name: Mount device
-  tags: 'volumes'
+  tags: "volumes"
   become: yes
   mount:
     path: "{{ item.mountpoint }}"

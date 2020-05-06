@@ -1,6 +1,6 @@
 - hosts: localhost
   vars_files:
-    - variables/nectar.yaml
+    - variables/nectar.yml
   gather_facts: true
 
   roles:

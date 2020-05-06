@@ -5,6 +5,8 @@ availability_zone: melbourne-qh2-uom
 volumes:
   - vol_name: volume-1-1
     vol_size: 10
+  - vol_name: volume-1-2
+    vol_size: 20
 
 # Security group
 security_groups:
@@ -26,6 +28,6 @@ instances:
   - name: instance-1
     image: 215f9775-483c-4e0a-b703-d21a5c966f2e
     flavor: t3.medium
-    volumes: ["volume-1-1"]
+    volumes: ["volume-1-1", "volume-1-2"]
 
 instance_key_name: Muhammads-MBP

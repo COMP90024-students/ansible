@@ -1,0 +1,3 @@
+---
+app_dir: app
+couchdb_dir: /data/couchdb
