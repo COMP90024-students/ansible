@@ -1,3 +1,4 @@
+MGZjZGU5NjJkN2Y0YzIz
 
 play:
 	. ./credentials/unimelb-comp90024-2020-grp-19-openrc.sh; \
