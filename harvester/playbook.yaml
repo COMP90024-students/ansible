@@ -1,9 +1,0 @@
-- hosts: harvester
-  vars_files:
-    - variables/harvester.yml
-  gather_facts: false
-
-  roles:
-    - role: common
-    - role: volumes
-    - role: harvester

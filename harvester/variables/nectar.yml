@@ -5,8 +5,8 @@ instance_key_name: comp90024-group19
 
 # Volume
 volumes:
-  - vol_name: website-1
-    vol_size: 20
+  - vol_name: harvester-1
+    vol_size: 5
 
 # Security group
 security_groups:
@@ -25,7 +25,7 @@ security_groups:
 
 # Instance
 instances:
-  - name: website-1
+  - name: harvester-1
     image: 215f9775-483c-4e0a-b703-d21a5c966f2e # 	NeCTAR Ubuntu 18.04 LTS (Bionic) amd64 (with Docker)
     flavor: t3.small
-    volumes: ["website-1"]
+    volumes: ["harvester-1"]

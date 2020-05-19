@@ -6,4 +6,4 @@
   roles:
     - role: install
     - role: mount_volumes
-    - role: website
+    - role: couchdb

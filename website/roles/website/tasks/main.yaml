@@ -1,28 +1,28 @@
 ---
-- name: Create App directory
-  tags: "app"
+- name: Create project directory
+  tags: "docker"
   become: yes
   file:
-    path: "{{ app_dir }}"
+    path: "{{ project_dir }}"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     recurse: yes
     state: directory
 
 - name: Configure compose
-  tags: "app"
+  tags: "docker"
   become: yes
   template:
     src: docker-compose.yml.j2
-    dest: "{{ app_dir }}/docker-compose.yml"
+    dest: "{{ project_dir }}/docker-compose.yml"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
 
 - name: Run docker compose
-  tags: "app"
+  tags: "docker"
   become: yes
   docker_compose:
-    project_src: "{{ app_dir }}"
+    project_src: "{{ project_dir }}"
     pull: yes
     state: present
     remove_orphans: yes
