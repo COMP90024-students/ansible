@@ -5,13 +5,9 @@ services:
   # Define our individual services
 
   flask:
-
-    # Build the flask service using the Dockerfile in the flask directory
-    build: ./flask
-
-    # Give our flask container a friendly name
-    container_name: flask
-
+    # Use website public image
+    image: karimoff/team19-website
+  
     # Instruct Docker to always restart the service
     restart: always
 
@@ -31,13 +27,8 @@ services:
       - ./log/uwsgi:/var/log/uwsgi
 
   nginx:
-
-    # Build the nginx service using the Dockerfile in the nginx directory
-    build: ./nginx
-
-    # Give our nginx container a friendly name
-    container_name: nginx
-
+    image: karimoff/team19-nginx
+    
     # Instruct Docker to always restart the service
     restart: always
 

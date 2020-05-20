@@ -1,6 +1,6 @@
 - hosts: nectar
   vars_files:
-    - variables/couchdb.yml
+    - variables/website.yml
   gather_facts: true
 
   roles:
