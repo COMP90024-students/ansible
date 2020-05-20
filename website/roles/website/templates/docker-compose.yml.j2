@@ -6,7 +6,7 @@ services:
 
   flask:
     # Use website public image
-    image: karimoff/team19-website
+    image: karimoff/team19-website:latest
   
     # Instruct Docker to always restart the service
     restart: always
@@ -27,7 +27,7 @@ services:
       - ./log/uwsgi:/var/log/uwsgi
 
   nginx:
-    image: karimoff/team19-nginx
+    image: karimoff/team19-nginx:latest
     
     # Instruct Docker to always restart the service
     restart: always
