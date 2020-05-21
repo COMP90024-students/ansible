@@ -1,9 +1,8 @@
 ---
 # CouchDB
-project_dir: couchdb
+project_dir: website
 database_user: admin
 database_password: MGZjZGU5N
-couchdb_dir: /data/couchdb
 
 volumes:
   - device: /dev/vdb
