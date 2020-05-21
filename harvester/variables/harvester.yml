@@ -1,0 +1,11 @@
+---
+# Harvester
+project_dir: harvester
+database_user: admin
+database_password: MGZjZGU5N
+database_host: 45.113.235.78
+database_port: 5984
+twitter_api_key: Y9QPnFuofPJDysYtfq3OJrIlp
+twitter_api_secret_key: 4KLD9lHOWVzG6TUmEORZ2gxW4kanXtsECoj0RIxu1Udnix4bpj
+twitter_access_token: 1031024454-17u1rln5FQWmh8DcJnCHbKMEZwOtqaxQCx9l2ac
+twitter_access_token_secret: K3GhuJzCVgwrzM1g1PQ5LxCjYqR8Pssy3FV1zMZPIcGkC

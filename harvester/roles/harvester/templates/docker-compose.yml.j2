@@ -1,0 +1,19 @@
+version: "3.6"
+
+services:
+  harvester-stream:
+    image: karimoff/team19-harvester-stream:latest
+    command: sh -c "/wait && python currentTweets.py"
+    environment:
+      WAIT_HOSTS: {{ database_host }}:{{ database_port }}
+      WAIT_HOSTS_TIMEOUT: 300
+      WAIT_SLEEP_INTERVAL: 30
+      WAIT_HOST_CONNECT_TIMEOUT: 30
+      TWITTER_API_KEY: {{ twitter_api_key }}
+      TWITTER_API_SECRET_KEY: {{ twitter_api_secret_key }}
+      TWITTER_ACCESS_TOKEN: {{ twitter_access_token }}
+      TWITTER_ACCESS_TOKEN_SECRET: {{ twitter_access_token_secret }}
+      COUCHDB_USER: {{ database_user }}
+      COUCHDB_PASSWORD: {{ database_password }}
+      COUCHDB_HOST: {{ database_host }}
+      COUCHDB_PORT: {{ database_port }}

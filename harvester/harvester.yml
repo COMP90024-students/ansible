@@ -1,9 +1,8 @@
 - hosts: nectar
   vars_files:
-    - variables/couchdb.yml
+    - variables/harvester.yml
   gather_facts: true
 
   roles:
     - role: install
-    - role: mount_volumes
-    - role: couchdb
+    - role: harvester

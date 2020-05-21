@@ -5,7 +5,5 @@
 
   roles:
     - role: common
-    - role: volumes
     - role: security-group
     - role: instances
-    - role: volume-snapshot
