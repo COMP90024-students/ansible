@@ -3,6 +3,9 @@
 project_dir: couchdb
 database_user: admin
 database_password: MGZjZGU5N
+database_cookie: comp90024team19
+database_uuid: 09e836387f7fe80a9416fbed6f000865
+database_secret: 09e836387f7fe80a9416fbed6f000ba1
 couchdb_dir: /data/couchdb
 
 volumes:

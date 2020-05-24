@@ -27,3 +27,23 @@
     state: present
     remove_orphans: yes
     recreate: always
+
+- name: Wait for restart
+  pause:
+    seconds: 15
+
+- name: Bind the clustered interface to all IP addresses availble on this machine
+  tags: "couchdb"
+  command: curl -X PUT http://{{ database_user }}:{{ database_password }}@127.0.0.1:5984/_node/_local/_config/chttpd/bind_address -d '"0.0.0.0"'
+
+- name: Bind the clustered interface to all IP addresses availble on this machine
+  tags: "couchdb"
+  command: curl -X PUT http://{{ database_user }}:{{ database_password }}@127.0.0.1:5984/_node/_local/_config/httpd/bind_address -d '"0.0.0.0"'
+
+- name: Set the UUID of the node to
+  tags: "couchdb"
+  command: curl -X PUT http://{{ database_user }}:{{ database_password }}@127.0.0.1:5984/_node/_local/_config/couchdb/uuid -d '"{{ database_uuid }}"'
+
+- name: Set the shared http secret for cookie creation
+  tags: "couchdb"
+  command: curl -X PUT http://{{ database_user }}:{{ database_password }}@127.0.0.1:5984/_node/_local/_config/couch_httpd_auth/secret -d '"{{ database_secret }}"'

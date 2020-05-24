@@ -14,6 +14,9 @@ services:
     # Use environment to set any environment variables
     environment:
       - APP_NAME=MyFlaskApp
+      - COUCHDB_HOST={{ database_host }}
+      - COUCHDB_USER={{ database_user }}
+      - COUCHDB_PASSWORD={{ database_password }}
 
     # Any ports listed using `expose` will only be accessible to internal services/containers
     # uWSGI will be serving our Flask application on port 8080

@@ -1,12 +1,18 @@
 ---
 # Common variables
 availability_zone: melbourne-qh2-uom
+network: qh2-uom-internal
+# instance_key_name: Muhammads-MBP
 instance_key_name: comp90024-group19
 
 # Volume
 volumes:
   - vol_name: couchdb-1
-    vol_size: 50
+    vol_size: 20
+  - vol_name: couchdb-2
+    vol_size: 20
+  - vol_name: couchdb-3
+    vol_size: 20
 
 # Security group
 security_groups:
@@ -16,24 +22,50 @@ security_groups:
     port_range_min: 22
     port_range_max: 22
     remote_ip_prefix: 0.0.0.0/0
-  - name: comp_http
-    description: "COMP90024 security group for HTTP"
-    protocol: tcp
-    port_range_min: 80
-    port_range_max: 80
-    remote_ip_prefix: 0.0.0.0/0
   - name: comp_couch
-    description: "COMP90024 security group for COUCHDB"
+    description: "COMP90024 security group for COUCHDB ports"
     protocol: tcp
     port_range_min: 5984
     port_range_max: 5984
     remote_ip_prefix: 0.0.0.0/0
 
+security_group_rules:
+  - name: ssh
+    security_group: "comp_ssh"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couch_master
+    security_group: "comp_couch"
+    protocol: tcp
+    port_range_min: 5984
+    port_range_max: 5984
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couch_replica
+    security_group: "comp_couch"
+    protocol: tcp
+    port_range_min: 4369
+    port_range_max: 4369
+    remote_ip_prefix: 0.0.0.0/0
+  - name: "comp_cluster"
+    security_group: "comp_couch"
+    protocol: tcp
+    port_range_min: 9100
+    port_range_max: 9200
+    remote_group: comp_couch
+
 # Instance
 instances:
   - name: couchdb-1
-    # image: 45225edb-66d8-4fd0-bf41-132a31a18166 #   NeCTAR Ubuntu 18.04 LTS (Bionic) amd64
-    image: 215f9775-483c-4e0a-b703-d21a5c966f2e   # 	NeCTAR Ubuntu 18.04 LTS (Bionic) amd64 (with Docker)
-    flavor: t3.medium
-    image: 215f9775-483c-4e0a-b703-d21a5c966f2e
+    image: 215f9775-483c-4e0a-b703-d21a5c966f2e # 	NeCTAR Ubuntu 18.04 LTS (Bionic) amd64 (with Docker)
+    flavor: uom.mse.2c9g
     volumes: ["couchdb-1"]
+  - name: couchdb-2
+    image: 215f9775-483c-4e0a-b703-d21a5c966f2e # 	NeCTAR Ubuntu 18.04 LTS (Bionic) amd64 (with Docker)
+    flavor: uom.mse.2c9g
+    volumes: ["couchdb-2"]
+  - name: couchdb-3
+    image: 215f9775-483c-4e0a-b703-d21a5c966f2e # 	NeCTAR Ubuntu 18.04 LTS (Bionic) amd64 (with Docker)
+    flavor: uom.mse.2c9g
+    volumes: ["couchdb-3"]

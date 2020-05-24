@@ -1,6 +1,7 @@
 ---
 # CouchDB
 project_dir: website
+database_host: 172.26.134.145
 database_user: admin
 database_password: MGZjZGU5N
 
