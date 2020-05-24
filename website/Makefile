@@ -14,4 +14,9 @@ play-nectar:
 
 play-website:
 	. ./credentials/unimelb-comp90024-2020-grp-19-openrc.sh; \
-	ansible-playbook -i inventory/inventory.ini -u ubuntu --key-file=~/.ssh/comp90024-group19.pem website.yml
+	ansible-playbook -i inventory/inventory.ini website.yml
+
+
+play-harvester:
+	. ./credentials/unimelb-comp90024-2020-grp-19-openrc.sh; \
+	ansible-playbook -i inventory/inventory.ini harvester.yml
