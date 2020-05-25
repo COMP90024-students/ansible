@@ -3,7 +3,7 @@
 project_dir: harvester
 database_user: admin
 database_password: MGZjZGU5N
-database_host: 45.113.235.78
+database_host: 172.26.130.117
 database_port: 5984
 twitter_api_key: Y9QPnFuofPJDysYtfq3OJrIlp
 twitter_api_secret_key: 4KLD9lHOWVzG6TUmEORZ2gxW4kanXtsECoj0RIxu1Udnix4bpj

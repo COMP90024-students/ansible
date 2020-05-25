@@ -1,9 +1,9 @@
 version: "3.6"
 
 services:
-  harvester-stream:
-    image: karimoff/team19-harvester-stream:latest
-    command: sh -c "/wait && python currentTweets.py"
+  harvester-replies:
+    image: karimoff/team19-harvester-replies:latest
+    command: sh -c "/wait && python tweetsFromReplies.py"
     environment:
       WAIT_HOSTS: {{ database_host }}:{{ database_port }}
       WAIT_HOSTS_TIMEOUT: 300
