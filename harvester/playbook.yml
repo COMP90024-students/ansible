@@ -10,4 +10,4 @@
 
   roles:
     - role: install-docker
-    - role: run-stream
+    - role: run-harvester
