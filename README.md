@@ -199,3 +199,13 @@ The figure below depicts the overall architecture of the system.
 ![couchdb](screenshots/system_architecture.png)
 
 We allocate one Compute instance for website while a three-node CouchDB cluster is deployed on the other three instances to provide RESTful APIs access for the visualization frontend. The details of the system is introduced in the final report. Jobs responsible for harvesting and analysing (preprocess and sentiment analysis) tweets are running inside one of couchdb instances.
+
+## Single Point of Failure (SFOP)
+
+We can discover that website server can a single point of failure in the system where user experience drastically impacted.
+
+As a solution, we can introduce load balancer that sits between external traffic and internal servers and distributes incomming traffic. If node fails, control node runs ansible script to provision new website instance and updates load balancer. So failure can be quickly recovered. Following diagram describes this senario.
+
+![failure](screenshots/failure.png)
+
+The analyzed twitter data on the single node is replicated to the CouchDB Cluster automatically. The CouchDB processes in the cluster are all deployed in Docker containers. Therefore, if one CouchDB node fails, it will not affect other processes in other Docker containers. On the other hand, the other CouchDB nodes will also not be affected by the single point failure.
