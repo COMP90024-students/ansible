@@ -147,4 +147,55 @@ $ make launch-website
 
 It's now live at http://172.26.134.45
 
+![couchdb](screenshots/website.png)
+
 ## Run harvester jobs
+
+We run harvester jobs in one of couchdb nodes, for example couchdb-3. 
+Because the cluster replicates between nodes, harvested tweets will be available in all nodes.
+
+Change hosts in `harvester/playbook.yml` to any of three nodes.
+
+Change environment variables in `harvester/host_vars/harvester.yml` which are used to connect Twitter API etc.
+
+Then, run
+```sh
+$ make play-harvester
+```
+
+Login to the instance to see processes are running
+```sh
+$ ssh -i ~/.ssh/comp90024-group19.pem ubuntu@172.26.130.117
+$ sudo docker ps
+```
+
+Visit http://172.26.132.171:5984/_utils/#/_all_dbs to see tweets are coming up.
+
+![couchdb](screenshots/couchdb.png)
+
+## Continuous Delivery
+
+The diagram below describes how project code ships from developers laptop to cloud infrastructure.
+
+![couchdb](screenshots/continuous_deployment.png)
+
+For example:
+- developer adds a new feature to website/harvester jobs
+- then commits and pushes to github
+- Github Actionswill be triggered which builds new docker image, tags with commit hash, and publishes to Docker Hub
+- From control node, devops engineer will run ansible script that rolls out new versions of application to dedicated servers.
+
+
+All Docker images are store in public Docker Hub repositories.
+V
+isit https://hub.docker.com/u/karimoff/starred to see all available versions.
+
+![couchdb](screenshots/docker_images.png)
+
+## Architecture
+
+The figure below depicts the overall architecture of the system.
+
+![couchdb](screenshots/system_architecture.png)
+
+We allocate one Compute instance for website while a three-node CouchDB cluster is deployed on the other three instances to provide RESTful APIs access for the visualization frontend. The details of the system is introduced in the final report. Jobs responsible for harvesting and analysing (preprocess and sentiment analysis) tweets are running inside one of couchdb instances.
