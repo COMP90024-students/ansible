@@ -18,6 +18,11 @@ launch-website:
 	ansible-playbook -i website/inventory/inventory.ini website/website.yml
 
 
+rollout-website:
+	. ./openrc.sh; \
+	ansible-playbook -i website/inventory/inventory.ini website/rollout.yml
+
+
 play-harvester:
 	. ./openrc.sh; \
 	ansible-playbook -i harvester/inventory/inventory.ini harvester/playbook.yml

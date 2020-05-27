@@ -1,0 +1,46 @@
+version: "3.6"
+
+services:
+
+  # Define our individual services
+
+  flask:
+    # Use website public image
+    image: karimoff/team19-website:{{ website_version }}
+  
+    # Instruct Docker to always restart the service
+    restart: always
+
+    # Use environment to set any environment variables
+    environment:
+      - APP_NAME=MyFlaskApp
+      - COUCHDB_HOST={{ database_host }}
+      - COUCHDB_USER={{ database_user }}
+      - COUCHDB_PASSWORD={{ database_password }}
+
+    # Any ports listed using `expose` will only be accessible to internal services/containers
+    # uWSGI will be serving our Flask application on port 8080
+    expose:
+      - 8080
+
+    # Mount the container log directory to the local log directory
+    # Consider changing this to /var/log/uwsgi:/var/log/uwsgi in production
+    # Just make sure the directory exists before running docker-compose up --build
+    volumes:
+      - ./log/uwsgi:/var/log/uwsgi
+
+  nginx:
+    image: karimoff/team19-nginx:latest
+    
+    # Instruct Docker to always restart the service
+    restart: always
+
+    # Any ports listed using `ports` will be exposed to the outside world
+    ports:
+      - "80:80"
+
+    # Mount the container log directory to the local log directory
+    # Consider changing this to /var/log/nginx:/var/log/nginx in production
+    # Just make sure the directory exists before running docker-compose up --build
+    volumes:
+      - ./log/nginx:/var/log/nginx

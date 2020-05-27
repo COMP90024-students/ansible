@@ -5,6 +5,8 @@ database_host: 172.26.134.145
 database_user: admin
 database_password: MGZjZGU5N
 
+website_version: 4c4c55097e4b87e8ac01085399dbdece4c3d091d
+
 volumes:
   - device: /dev/vdb
     mountpoint: /data

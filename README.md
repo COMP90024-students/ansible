@@ -9,6 +9,14 @@ This Repository is written by Mukhammad Karimov to perform following tasks:
 - Rollout latest or specific versions of applications.
 - Scale up or down in case of failure/increased traffic. 
 
+For demo videos are available:
+- https://youtu.be/1wQSoMHkkMQ
+- https://youtu.be/wBX-lRffV5Y
+
+[![Ansible Demo 1](http://img.youtube.com/vi/1wQSoMHkkMQ/0.jpg)](http://www.youtube.com/watch?v=1wQSoMHkkMQ)
+
+[![Ansible Demo 2](http://img.youtube.com/vi/wBX-lRffV5Y/0.jpg)](http://www.youtube.com/watch?v=wBX-lRffV5Y)
+
 ## Structure
 
 ```
