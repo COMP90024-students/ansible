@@ -143,7 +143,7 @@ Update `website/inventory/inventory.ini` to include ip addresses of newly create
 ansible_connection=local
 
 [nectar]
-172.26.134.45
+172.26.132.192
 ```
 
 Change host, user, password of database if you want in here `website/host_vars/website.yml`
@@ -153,7 +153,7 @@ Now, we can launch a website. Run
 $ make launch-website
 ```
 
-It's now live at http://172.26.134.45
+It's now live at http://172.26.132.192
 
 ![couchdb](screenshots/website.png)
 
